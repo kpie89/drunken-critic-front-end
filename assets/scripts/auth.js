@@ -9,7 +9,7 @@ require('expose?$!jquery');
 require('expose?jQuery!jquery');
 
 const myApp = {
-  BASE_URL: 'http://localhost:8080',
+  BASE_URL: 'http://localhost:3000',
 };
 
 $(document).ready(() => {
