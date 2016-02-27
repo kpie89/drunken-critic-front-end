@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="full" lang="en">
 
 <head>
   <title>The Drunken Critic</title>
@@ -40,7 +40,7 @@
               <h4 class="modal-title" id="signup-label">Sign Up</h4>
             </div>
             <div class="modal-body">
-              <form id='sign-up' name="sign-up">
+              <form id='sign-up'>
                 <fieldset class="form-group">
                   <label for="credentials[email]">Email</label>
                   <input class="form-control" name="credentials[email]" placeholder="Email" type="text">
@@ -82,22 +82,108 @@
           </div>
         </div>
       </div>
+      <button type="button" class="btn btn-default random" data-toggle="modal" data-target="#random-beer">Discover a new beer!</button>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Change Password</a></li>
+            <li>
+              <button class="btn btn-default navbar-btn signed-in btn-sm" data-target="#change-password-modal" data-toggle="modal" type="button">Change Password</button>
+            </li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Log Out</a></li>
+            <li>
+              <button class="btn btn-default navbar-btn signed-out btn-sm" data-target="#sign-out-modal" data-toggle="modal" type="button">Logout</button>
+            </li>
           </ul>
         </li>
       </ul>
+    </div>
+    <!-- Change password modal -->
+    <div aria-labelledby="myModalLabel" class="modal fade" id="change-password-modal" role="dialog" tabindex="-1">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="change-password-label">Change
+                  Password</h4>
+          </div>
+          <div class="modal-body">
+            <form id='change-password' name="change-password">
+              <fieldset class="form-group">
+                <label for="passwords[old]">Old Password
+                </label>
+                <input class="form-control" name="passwords[old]" placeholder="Old Password" type="text">
+              </fieldset>
+              <fieldset class="form-group">
+                <label for="passwords[new]">New Password
+                </label>
+                <input class="form-control" name="passwords[new]" placeholder="Password" type="password">
+              </fieldset>
+              <input class="btn btn-primary" name="submit" type="submit">
+              <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Sign Out Modal -->
+    <div aria-labelledby="myModalLabel" class="modal fade" id="sign-out-modal" role="dialog" tabindex="-1">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="sign-out-label">For real?</h4>
+          </div>
+          <div class="modal-body">
+            <button type="button" input class="btn btn-primary" name="submit" <button type="button" class="btn btn-primary" id="sign-out-button" data-dismiss="modal">Yeah</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Nah</button>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- /.navbar-collapse -->
   </div>
   <!-- /.container-fluid -->
 </nav>
+<!-- Modal -->
+<div class="modal fade" id="random-beer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="have-you?">Have you had this beer?</h4>
+      </div>
+      <div class="modal-body">
+        <div class="content"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default rate-beer" data-dismiss="modal">Yes! I'll rate it!</button>
+        <button type="button" class="btn btn-primary try-again" data-dismiss="modal">No. I'll have to try again.</button>
+      </div>
+    </div>
+  </div>
 </div>
+</div>
+<form class='rating'>
+  <fieldset class="form-group">
+    <div>
+    <label for="score">Score Outta 5</label>
+  </div>
+    <div class="col-xs-1">
+  <input type="text" class="form-control" placeholder="1 thru 5">
+</div>
+</div>
+  </fieldset>
+  <fieldset class="form-group">
+    <div>
+    <label for="formGroupExampleInput2">Description</label>
+  </div>
+    <div class="col-md-6">
+    <input type="text" class="form-control input-lg" id="formGroupExampleInput2" placeholder="Another input">
+  </div>
+  </fieldset>
+</form>
 </body>
 
 </html>
