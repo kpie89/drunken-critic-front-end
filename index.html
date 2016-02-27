@@ -168,22 +168,24 @@
 <form class='rating'>
   <fieldset class="form-group">
     <div>
-    <label for="score">Score Outta 5</label>
+    <label for="rating[score]">Score Outta 5</label>
   </div>
     <div class="col-xs-1">
-  <input type="text" class="form-control" placeholder="1 thru 5">
+  <input type="text" class="form-control" name="rating[score]" placeholder="1 thru 5">
 </div>
 </div>
   </fieldset>
   <fieldset class="form-group">
     <div>
-    <label for="formGroupExampleInput2">Description</label>
+    <label for="rating[desc]">Description</label>
   </div>
     <div class="col-md-6">
-    <input type="text" class="form-control input-lg" id="formGroupExampleInput2" placeholder="Another input">
+    <input type="text" class="form-control input-lg" id="desc" name="rating[desc]" placeholder="What do you think?">
   </div>
   </fieldset>
+  <input class="btn btn-primary" name="submit" type="submit">
 </form>
+
 </body>
 
 </html>
