@@ -1,7 +1,7 @@
 'use strict';
 
 // user require with a reference to bundle the file and use it in this file
-// var example = require('./example');
+// let example = require('./example');
 
 // use require without a reference to ensure a file is bundled
 require('./example');
@@ -13,7 +13,6 @@ const myApp = {
 $(document).ready(() => {
 
   $('.rating').hide();
-  $('.sign-in').hide();
   $('.random').hide();
 
 
@@ -50,7 +49,7 @@ $(document).ready(() => {
   $('#sign-up').on('submit', function(e) {
     e.preventDefault();
     console.log('here');
-    var formData = new FormData(e.target);
+    let formData = new FormData(e.target);
     $.ajax({
       url: myApp.BASE_URL + '/sign-up',
       method: 'POST',
@@ -73,7 +72,7 @@ $(document).ready(() => {
   $('#sign-in').on('submit', function(e) {
     e.preventDefault();
     console.log('here');
-    var formData = new FormData(e.target);
+    let formData = new FormData(e.target);
     $.ajax({
       url: myApp.BASE_URL + '/sign-in',
       method: 'POST',
@@ -84,6 +83,7 @@ $(document).ready(() => {
       myApp.user = data.user;
       console.log(data);
       $('#sign-in-modal').modal('hide');
+      $('.random').show();
     }).fail(function(jqxhr) {
       console.error(jqxhr);
     });
@@ -97,7 +97,7 @@ $(document).ready(() => {
     }
 
 
-    var formData = new FormData(e.target);
+    let formData = new FormData(e.target);
     $.ajax({
       url: myApp.BASE_URL + '/change-password/' + myApp.user.id,
       method: 'PATCH',
@@ -130,6 +130,27 @@ $(document).ready(() => {
       },
     }).done(function() {
      console.log('You have logged out');
+    }).fail(function(jqxhr) {
+      console.error(jqxhr);
+    });
+  });
+  $('.rating').on('submit', function(e) {
+    e.preventDefault();
+    console.log('here');
+    let formData = new FormData(e.target);
+    $.ajax({
+      url: myApp.BASE_URL + '/ratings',
+      method: 'POST',
+      headers: {
+        Authorization: 'Token token=' + myApp.user.token,
+      },
+      contentType: false,
+      processData: false,
+      data: formData,
+    }).done(function(data) {
+      myApp.user = data.user;
+      console.log(data);
+      $('#sign-in-modal').modal('hide');
     }).fail(function(jqxhr) {
       console.error(jqxhr);
     });
