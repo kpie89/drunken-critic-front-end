@@ -13,6 +13,9 @@ const myApp = {
 $(document).ready(() => {
 
   $('.rating').hide();
+  $('.sign-in').hide();
+  $('.random').hide();
+
 
 
   let displayBeer = function(response) {
@@ -57,10 +60,15 @@ $(document).ready(() => {
     }).done(function(data) {
       console.log(data);
       $('#sign-up-modal').modal('hide');
+      $('.sign-up').hide();
+      $('.sign-in').show();
+      $('.random').show();
     }).fail(function(jqxhr) {
       console.error(jqxhr);
     });
   });
+
+
 
   $('#sign-in').on('submit', function(e) {
     e.preventDefault();
