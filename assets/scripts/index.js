@@ -11,6 +11,10 @@ const myApp = {
 };
 
 $(document).ready(() => {
+
+  $('.rating').hide();
+
+
   let displayBeer = function(response) {
     let beer = response.beer;
     console.log('here');
@@ -35,9 +39,11 @@ $(document).ready(() => {
     e.preventDefault();
     randomBeer();
   });
+  $('.rate-beer').on('click', function(e){
+    e.preventDefault();
+    $('.rating').show();
+  });
 
-
-  console.log('here');
   $('#sign-up').on('submit', function(e) {
     e.preventDefault();
     console.log('here');
