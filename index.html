@@ -155,7 +155,7 @@
         <h4 class="modal-title" id="have-you?">Have you had this beer?</h4>
       </div>
       <div class="modal-body">
-        <div class="content"></div>
+        <div class="random-beer"></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default rate-beer" data-dismiss="modal">Yes! I'll rate it!</button>
@@ -180,11 +180,13 @@
     <label for="rating[desc]">Description</label>
   </div>
     <div class="col-md-6">
-    <input type="text" class="form-control input-lg" id="desc" name="rating[desc]" placeholder="What do you think?">
+    <textarea class="form-control" rows="5" id="desc" name="rating[desc]" placeholder="What do you think?"></textarea>
   </div>
   </fieldset>
   <input class="btn btn-primary" name="submit" type="submit">
 </form>
+<div class='rating-listing'>
+</div>
 
 </body>
 
