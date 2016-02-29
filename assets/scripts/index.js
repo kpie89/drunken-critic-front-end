@@ -198,7 +198,8 @@ $(document).ready(() => {
       console.log(myApp.rating.id);
       console.log(beerData.beer);
       $('.rating').hide();
-
+      // $('.rating-listing').empty();
+      // rating();
     }).fail(function(jqxhr) {
       console.error(jqxhr);
     });
@@ -211,6 +212,7 @@ let displayRatings = function(response) {
   let ratingListing = require('./rating-listing.handlebars');
   console.log(rating);
   console.log();
+    // $('.rating-listing').empty();
     $('.rating-listing').append(ratingListing({
        rating
      }));
@@ -236,7 +238,7 @@ $('.rating').on('submit', function(e){
  });
 
 // update rating
-$('#update-rating').on('submit', function(e) {
+$('#update-rating').on('submit', '.update-done', function(e) {
   e.preventDefault();
   if (!myApp.user) {
     console.error('Wrong!');
@@ -256,13 +258,15 @@ $('#update-rating').on('submit', function(e) {
   }).done(function(data) {
     console.log(data);
     $('#update-rating-modal').modal('hide');
+    $('.rating-listing').empty();
+    rating();
   }).fail(function(jqxhr) {
     console.error(jqxhr);
   });
 });
 
 // delete rating
-$('#delete-button').on('click', function(e) {
+$('.rating-listing').on('click', '.delete', function(e) {
   e.preventDefault();
   if (!myApp.user) {
     console.error('Wrong!');
@@ -270,17 +274,38 @@ $('#delete-button').on('click', function(e) {
   }
 
   $.ajax({
-    url: myApp.BASE_URL + '/ratings/' + myApp.rating.id,
+    url: myApp.BASE_URL + '/ratings/' + $(e.target).attr("data-id"),
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + myApp.user.token,
     },
   }).done(function() {
-   console.log(myApp.rating);
    console.log('deleted post');
+   $('#delete-button').off('click', '**');
+     e.preventDefault();
+     console.log(myApp.rating.id);
+   $('.rating-listing').empty('');
    rating();
   }).fail(function(jqxhr) {
     console.error(jqxhr);
   });
 });
+
+
+
+
+// search beers
+$('.search-it').on('click', function(e) {
+  e.preventDefault();
+  $.ajax({
+    url: myApp.BASE_URL + '/beer?search_key=' + $('#search-bar').val(),
+    method: 'GET',
+    dataType: 'json'
+  }).done(function(beer){
+    console.log(beer);
+    $('.search').val('');
+  }).fail(function(jqxhr) {
+    console.error(jqxhr);
+  });
+  });
 });
