@@ -1,4 +1,12 @@
 <div class="entry">
-  <h1>{{beer.name}}</h1>
-  <h2>{{beer.abv}}</h2>
+  <h1>Name: {{beer}}</h1>
+  {{#if abv}}
+  <h2>ABV: {{abv}}</h2>
+  {{/if}}
+  {{#if style}}
+  <h2>Style: {{style}}</h2>
+  {{/if}}
+  {{#if brewery.title}}
+  <h2>Brewery: {{brewery.title}}</h2>
+  {{/if}}
 </div>
