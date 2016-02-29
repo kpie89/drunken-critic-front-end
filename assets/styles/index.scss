@@ -16,7 +16,13 @@ body {
   background-size: cover;
 }
 
-.navbar-inner{
+.navbar{
   background-image: url('http://bgfons.com/upload/beer_texture1958.jpg');
   background-repeat: repeat-x;
+	border: none;
+}
+
+.rating-listing {
+	color: white;
+
 }
