@@ -7,7 +7,7 @@
   <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
 </head>
 <div class="page-header">
-  <h1>The Drunken Critic <small>For judgy drunk folks.</small></h1>
+  <h1>The Drunken Critic</h1>
 </div>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -104,7 +104,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="change-password-label">Change
+            <h4 class="modal-title" style="text-align: center" id="change-password-label">Change
                   Password</h4>
           </div>
           <div class="modal-body">
@@ -168,26 +168,75 @@
 <form class='rating'>
   <fieldset class="form-group">
     <div>
-    <label for="rating[score]">Score Outta 5</label>
-  </div>
+      <label for="rating[score]">Score Outta 5</label>
+    </div>
     <div class="col-xs-1">
-  <input type="text" class="form-control" name="rating[score]" placeholder="1 thru 5">
-</div>
-</div>
+      <input type="text" class="form-control" name="rating[score]" placeholder="1 thru 5">
+    </div>
+    </div>
   </fieldset>
   <fieldset class="form-group">
     <div>
-    <label for="rating[desc]">Description</label>
-  </div>
+      <label for="rating[desc]">Description</label>
+    </div>
     <div class="col-md-6">
-    <textarea class="form-control" rows="5" id="desc" name="rating[desc]" placeholder="What do you think?"></textarea>
-  </div>
+      <textarea class="form-control" rows="5" id="desc" name="rating[desc]" placeholder="What do you think?"></textarea>
+    </div>
   </fieldset>
   <input class="btn btn-primary" name="submit" type="submit">
 </form>
-<div class='rating-listing'>
-</div>
 
-</body>
+      <div class="home-page">
+        <h1>Sign up or sign in to start</h1>
+      </div>
+      <div class="rating-listing">
+        <h1>Your ratings:</h1>
+      </div>
+
+      <!-- update-rating-modal-->
+      <div class="modal fade" id="update-rating-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="update-rating?">Update this rating</h4>
+            </div>
+            <div class="modal-body">
+              <form id="update-rating-modal" name="update-rating">
+                <fieldset class="form-group">
+                  <label for="rating[score]">New Score
+                  </label>
+                  <input class="form-control" name="rating[score]" placeholder="New Score" type="text">
+                </fieldset>
+                <fieldset class="form-group">
+                  <label for="rating[desc]">New Description
+                  </label>
+                  <input class="form-control" name="rating[desc]" placeholder="New Desc" type="text">
+                </fieldset>
+                <input class="btn btn-primary" name="submit" type="submit">
+                <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- delete rating modal-->
+      <div aria-labelledby="myModalLabel" class="modal fade" id="delete-modal" role="dialog" tabindex="-1">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="delete-label">For real?</h4>
+            </div>
+            <div class="modal-body">
+              <button type="button" input class="btn btn-primary" name="submit" <button type="button" class="btn btn-primary" id="delete-button" data-dismiss="modal">Yeah</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Nah</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      </body>
 
 </html>
