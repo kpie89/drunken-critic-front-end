@@ -5,6 +5,8 @@
 
 // load manifests
 // scripts
+// require('./assets/scripts/rating-listing.handlebars');
+
 require('./assets/scripts/index.js');
 
 // styles
