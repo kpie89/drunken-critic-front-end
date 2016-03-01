@@ -29,7 +29,7 @@
         <div class="form-group">
           <input type="text" class="form-control" id="search-bar" placeholder="Search">
         </div>
-        <button type="submit" class="btn btn-default search-it">Submit</button>
+        <button type="submit" class="btn btn-default search-it" data-toggle="modal" data-target="#search-beer">Submit</button>
       </form>
       <!--sign-up modal -->
       <button class="btn btn-default navbar-btn sign-up" data-target="#sign-up-modal" data-toggle="modal" type="button">Sign Up</button>
@@ -147,7 +147,7 @@
   </div>
   <!-- /.container-fluid -->
 </nav>
-<!-- Modal -->
+<!-- Random beer modal -->
 <div class="modal fade" id="random-beer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -161,6 +161,26 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default rate-beer" data-dismiss="modal">Yes! I'll rate it!</button>
         <button type="button" class="btn btn-primary try-again" data-dismiss="modal">No. I'll have to try again.</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Search beer modal -->
+<div class="modal fade" id="search-beer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="search-results">Search Results</h4>
+      </div>
+      <div class="modal-body">
+        <div class="search-results"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default rate-beer-search" data-dismiss="modal">That's it! Rate it.</button>
+        <button type="button" class="btn btn-primary try-again-search" data-dismiss="modal">No. I'll have to try again.</button>
       </div>
     </div>
   </div>
@@ -190,9 +210,10 @@
       <div class="home-page">
         <h1>Sign up or sign in to start</h1>
       </div>
-      <div class="rating-listing">
+      <div class="beer-listing col-xs-12 col-md-4">
         <h1>Your ratings:</h1>
-      </div>
+      <div class="rating-listing col-xs-12 col-md-8">
+        </div>
 
       <!-- update-rating-modal-->
       <div class="modal fade" id="update-rating-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
