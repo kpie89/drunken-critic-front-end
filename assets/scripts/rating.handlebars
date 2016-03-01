@@ -1,6 +1,7 @@
 <div class="rating" data={{id}}>
+    <h2>{{beer_id}}
     <h3>Score: {{score}}</h3>
     <p style="color:gray">Description: {{desc}}</p>
-    <button class="btn btn-default navbar-btn update-rating" id='update-rating' data-target="#update-rating-modal" data-toggle="modal" type="button" data-id="{{id}}">Update Rating</button>
+    <button class="btn btn-default navbar-btn edit-rating" id='update-rating' data-target="#update-rating-modal" data-toggle="modal" type="button" data-edit-id="{{id}}">Update Rating</button>
     <button class="btn btn-default navbar-btn delete" id='delete-rating' type="button" data-id="{{id}}">Delete</button>
 </div>
