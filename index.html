@@ -5,6 +5,7 @@
   <title>The Drunken Critic</title>
   <script src="vendor.bundle.js" type="text/javascript" charset="utf-8" defer></script>
   <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
+  <link rel="icon" type="image/ico" href="https://s3-us-west-2.amazonaws.com/beerrec/img/favicon.ico">
 </head>
 <div class="page-header">
   <h1>The Drunken Critic</h1>
@@ -82,8 +83,8 @@
           </div>
         </div>
       </div>
-      <button type="button" class="btn btn-default random" data-toggle="modal" data-target="#random-beer">Discover a new beer!</button>
-      <ul class="nav navbar-nav navbar-right">
+      <button type="button" class="btn btn-default navbar-btn random" data-toggle="modal" data-target="#random-beer">Discover a new beer!</button>
+      <ul class="nav navbar-nav navbar-right account">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -204,14 +205,14 @@
             <div class="modal-body">
               <form id="update-rating-modal" name="update-rating">
                 <fieldset class="form-group">
-                  <label for="rating[score]">New Score
+                  <label for="rating[score]">1 outta 5
                   </label>
                   <input class="form-control" name="rating[score]" placeholder="New Score" type="text">
                 </fieldset>
                 <fieldset class="form-group">
                   <label for="rating[desc]">New Description
                   </label>
-                  <input class="form-control" name="rating[desc]" placeholder="New Desc" type="text">
+                  <textarea class="form-control" rows="5" name="rating[desc]" placeholder="New Desc" type="text"></textarea>
                 </fieldset>
                 <input class="btn btn-primary update-done" data-id="{{id}}" name="submit" type="submit">
                 <!-- <button class="btn btn-default navbar-btn update-done" id='update-rating' type="button" data-id="{{id}}">Update!</button> -->
