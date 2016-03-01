@@ -5,6 +5,15 @@
 
 // use require without a reference to ensure a file is bundled
 require('./example');
+// const beerButton = require('./display-random-beer.js');
+// const signIn = require('./sign-in.js');
+// const signUp = require('./sign-up.js');
+// const changePassword = require('./change-password.js');
+// const signOut = require('./sign-out.js');
+// const rateBeer = require('./create-rating.js');
+// const showBeer = require('./display-rating.js');
+// const editBeer = require('./update-rating.js');
+// const beerSearch = require('./search-beer.js');
 
 const myApp = {
   BASE_URL: 'http://localhost:3000',
@@ -19,9 +28,24 @@ $(document).ready(() => {
   $('.rating').hide();
   $('.random').hide();
   $('.rating-listing').html('');
+  $('.account').hide();
+
+//   beerButton.displayRandomBeer();
+//   signUp.signUp();
+//   signIn.signIn();
+//   changePassword.changePassword();
+//   signOut.signOut();
+//   rateBeer.createRating();
+//   showBeer.displayRatings();
+//   editBeer.updateRating();
+//   beerSearch.searchBeer();
+// });
+
+
+
 
 // Display random beer
-  let displayBeer = function(response) {
+  let displayRandomBeer = function(response) {
     let beer = response.beer;
     let abv = response.abv;
     let style = response.style;
@@ -29,11 +53,11 @@ $(document).ready(() => {
     console.log('here');
     let beerListing = require('./beer_listing.handlebars');
     console.log(beer);
-    beerData.beer = response.key;
+    beerData.beer = response.beer;
     console.log(beerData.beer);
     console.log(beer.id);
 
-      $('.random-beer').append(beerListing({
+      $('.random-beer').prepend(beerListing({
          beer,
          abv,
          style,
@@ -49,7 +73,7 @@ $(document).ready(() => {
       dataType: 'json'
     }).done(function(beer){
       console.log(beer);
-      displayBeer(beer);
+      displayRandomBeer(beer);
     }).fail(function(jqxhr) {
       console.error(jqxhr);
     });
@@ -69,7 +93,7 @@ $(document).ready(() => {
   });
 
 // sign-up
-  $('#sign-up').on('submit', function(e) {
+    $('#sign-up').on('submit', function(e) {
     e.preventDefault();
     console.log('here');
     let formData = new FormData(e.target);
@@ -111,6 +135,7 @@ $(document).ready(() => {
       $('.sign-up').hide();
       $('.random').show();
       $('.home-page').hide();
+      $('.account').show();
       rating();
 
     }).fail(function(jqxhr) {
@@ -124,7 +149,7 @@ $(document).ready(() => {
   });
 
 // change-password
-  $('#change-password').on('submit', function(e) {
+$('#change-password').on('submit', function(e) {
     e.preventDefault();
     if (!myApp.user) {
       console.error('Wrong!');
@@ -150,7 +175,7 @@ $(document).ready(() => {
   });
 
 // sign-out
-  $('#sign-out-button').on('click', function(e) {
+$('#sign-out-button').on('click', function(e) {
     e.preventDefault();
     if (!myApp.user) {
       console.error('Wrong!');
@@ -169,13 +194,14 @@ $(document).ready(() => {
      $('.random').hide();
      $('.sign-up').show();
      $('.sign-in').show();
-
+     $('.account').hide();
+     $('.home-page').show();
     }).fail(function(jqxhr) {
       console.error(jqxhr);
     });
   });
 
-  // create rating
+  //create rating
   $('.rating').on('submit', function(e) {
     e.preventDefault();
     console.log('here');
@@ -199,7 +225,7 @@ $(document).ready(() => {
       console.log(beerData.beer);
       $('.rating').hide();
       // $('.rating-listing').empty();
-      // rating();
+      rating();
     }).fail(function(jqxhr) {
       console.error(jqxhr);
     });
@@ -232,14 +258,18 @@ let rating = function(){
     displayRatings(rating);
   });
 };
-$('.rating').on('submit', function(e){
-  e.preventDefault();
-  rating();
- });
+// $('.rating').on('submit', function(e){
+//   e.preventDefault();
+//   rating();
+//  });
 
 // update rating
-$('#update-rating').on('submit', '.update-done', function(e) {
-  e.preventDefault();
+  $('.rating-listing').on('click', '.edit-rating', function(e) {
+  myApp.id = $(e.target).attr("data-edit-id");
+  console.log(myApp.id);
+
+  $('#update-rating-modal').on('submit', function(e) {
+  e.preventDefault(e);
   if (!myApp.user) {
     console.error('Wrong!');
     return;
@@ -247,7 +277,7 @@ $('#update-rating').on('submit', '.update-done', function(e) {
 
   let formData = new FormData(e.target);
   $.ajax({
-    url: myApp.BASE_URL + '/ratings/' + myApp.rating.id,
+    url: myApp.BASE_URL + '/ratings/' + myApp.id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + myApp.user.token,
@@ -264,24 +294,27 @@ $('#update-rating').on('submit', '.update-done', function(e) {
     console.error(jqxhr);
   });
 });
+});
 
 // delete rating
 $('.rating-listing').on('click', '.delete', function(e) {
   e.preventDefault();
+  myApp.id = $(e.target).attr("data-id");
+  console.log(myApp.id);
   if (!myApp.user) {
     console.error('Wrong!');
     return;
   }
 
   $.ajax({
-    url: myApp.BASE_URL + '/ratings/' + $(e.target).attr("data-id"),
+    url: myApp.BASE_URL + '/ratings/' + myApp.id,
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + myApp.user.token,
     },
   }).done(function() {
    console.log('deleted post');
-   $('#delete-button').off('click', '**');
+  //  $('#delete-button').off('click', '**');
      e.preventDefault();
      console.log(myApp.rating.id);
    $('.rating-listing').empty('');

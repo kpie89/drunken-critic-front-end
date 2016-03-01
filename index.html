@@ -26,9 +26,9 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+          <input type="text" class="form-control" id="search-bar" placeholder="Search">
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default search-it">Submit</button>
       </form>
       <!--sign-up modal -->
       <button class="btn btn-default navbar-btn sign-up" data-target="#sign-up-modal" data-toggle="modal" type="button">Sign Up</button>
@@ -213,25 +213,9 @@
                   </label>
                   <input class="form-control" name="rating[desc]" placeholder="New Desc" type="text">
                 </fieldset>
-                <input class="btn btn-primary" name="submit" type="submit">
+                <input class="btn btn-primary update-done" data-id="{{id}}" name="submit" type="submit">
+                <!-- <button class="btn btn-default navbar-btn update-done" id='update-rating' type="button" data-id="{{id}}">Update!</button> -->
                 <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- delete rating modal-->
-      <div aria-labelledby="myModalLabel" class="modal fade" id="delete-modal" role="dialog" tabindex="-1">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="delete-label">For real?</h4>
-            </div>
-            <div class="modal-body">
-              <button type="button" input class="btn btn-primary" name="submit" <button type="button" class="btn btn-primary" id="delete-button" data-dismiss="modal">Yeah</button>
-              <button type="button" class="btn btn-default" data-dismiss="modal">Nah</button>
               </form>
             </div>
           </div>
