@@ -328,17 +328,52 @@ $('.rating-listing').on('click', '.delete', function(e) {
 
 
 // search beers
-$('.search-it').on('click', function(e) {
-  e.preventDefault();
-  $.ajax({
-    url: myApp.BASE_URL + '/beer?search_key=' + $('#search-bar').val(),
+let searchResults = function (response){
+  let beer = response.beer;
+  let abv = response.abv;
+  let style = response.style;
+  let brewery = response.brewery;
+  console.log('here');
+  let beerListing = require('./beer_listing.handlebars');
+  console.log(beer);
+  beerData.beer = response.beer;
+  console.log(beerData.beer);
+  console.log(beer.id);
+
+    $('.search-results').append(beerListing({
+       beer,
+       abv,
+       style,
+       brewery
+
+     }));
+};
+
+
+  let searchBeer = function(){$.ajax({
+    url: myApp.BASE_URL + '/beer?search_key=' + $('#search-bar').val().toLowerCase().replace(' ',''),
     method: 'GET',
     dataType: 'json'
   }).done(function(beer){
     console.log(beer);
-    $('.search').val('');
+    $('.search').empty();
+    searchResults(beer);
   }).fail(function(jqxhr) {
     console.error(jqxhr);
   });
+};
+$('.search-it').on('click', function(e) {
+e.preventDefault();
+searchBeer();
+$('.rate-beer-search').on('click', function(e){
+  e.preventDefault();
+  $('.rating').show();
+  $('.search-results').html('');
+});
+$('.try-again-search').on('click', function(e) {
+  e.preventDefault();
+  $('.search-results').html('');
+});
+
   });
 });
