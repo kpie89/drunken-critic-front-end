@@ -39,8 +39,9 @@ $(document).ready(() => {
   $('.your-ratings').hide();
   $('.rating-listing').empty('');
 
+
+// seperated click handler to expose bug
   $('.rate-beer').on('click', function(e) {
-    debugger;
     e.preventDefault();
     console.log('look');
     $('.rating').show();
