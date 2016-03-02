@@ -26,8 +26,8 @@ const beerData = {
 $(document).ready(() => {
 
   $('.carousel').carousel({
-  interval: 15000
-});
+    interval: 15000
+  });
 
 
   $('.rating').hide();
@@ -39,28 +39,30 @@ $(document).ready(() => {
   $('.your-ratings').hide();
   $('.rating-listing').empty('');
 
-  $('.rate-beer').on('click', function(e){
+  $('.rate-beer').on('click', function(e) {
+    debugger;
     e.preventDefault();
+    console.log('look');
     $('.rating').show();
     $('.random-beer').html('');
   });
 
 
-//   beerButton.displayRandomBeer();
-//   signUp.signUp();
-//   signIn.signIn();
-//   changePassword.changePassword();
-//   signOut.signOut();
-//   rateBeer.createRating();
-//   showBeer.displayRatings();
-//   editBeer.updateRating();
-//   beerSearch.searchBeer();
-// });
+  //   beerButton.displayRandomBeer();
+  //   signUp.signUp();
+  //   signIn.signIn();
+  //   changePassword.changePassword();
+  //   signOut.signOut();
+  //   rateBeer.createRating();
+  //   showBeer.displayRatings();
+  //   editBeer.updateRating();
+  //   beerSearch.searchBeer();
+  // });
 
 
 
 
-// Display random beer
+  // Display random beer
   let displayRandomBeer = function(response) {
     let beer = response.beer;
     let abv = response.abv;
@@ -73,28 +75,28 @@ $(document).ready(() => {
     console.log(beerData.beer);
     console.log(beer.id);
 
-      $('.random-beer').prepend(beerListing({
-         beer,
-         abv,
-         style,
-         brewery
+    $('.random-beer').prepend(beerListing({
+      beer,
+      abv,
+      style,
+      brewery
 
-       }));
+    }));
   };
 
-  let randomBeer = function(){
+  let randomBeer = function() {
     $.ajax({
       url: myApp.BASE_URL + '/beer/rand',
       method: 'GET',
       dataType: 'json'
-    }).done(function(beer){
+    }).done(function(beer) {
       console.log(beer);
       displayRandomBeer(beer);
     }).fail(function(jqxhr) {
       console.error(jqxhr);
     });
   };
-  $('.random').on('click', function(e){
+  $('.random').on('click', function(e) {
     e.preventDefault();
     randomBeer();
   });
@@ -108,8 +110,8 @@ $(document).ready(() => {
     $('.random-beer').html('');
   });
 
-// sign-up
-    $('#sign-up').on('submit', function(e) {
+  // sign-up
+  $('#sign-up').on('submit', function(e) {
     e.preventDefault();
     console.log('here');
     let formData = new FormData(e.target);
@@ -133,7 +135,7 @@ $(document).ready(() => {
   });
 
 
-// sign-in
+  // sign-in
   let signIn = function(e) {
     e.preventDefault();
     console.log('here');
@@ -169,8 +171,8 @@ $(document).ready(() => {
     signIn(e);
   });
 
-// change-password
-$('#change-password').on('submit', function(e) {
+  // change-password
+  $('#change-password').on('submit', function(e) {
     e.preventDefault();
     if (!myApp.user) {
       console.error('Wrong!');
@@ -195,8 +197,8 @@ $('#change-password').on('submit', function(e) {
     });
   });
 
-// sign-out
-$('#sign-out-button').on('click', function(e) {
+  // sign-out
+  $('#sign-out-button').on('click', function(e) {
     e.preventDefault();
     if (!myApp.user) {
       console.error('Wrong!');
@@ -210,22 +212,22 @@ $('#sign-out-button').on('click', function(e) {
         Authorization: 'Token token=' + myApp.user.token,
       },
     }).done(function() {
-     console.log('You have logged out');
-     $('.rating').hide();
-     $('.random').hide();
-     $('.sign-up').show();
-     $('.sign-in').show();
-     $('.account').hide();
-     $('.home-page').show();
-     $('.beer-listing').hide();
-     $('.rating-listing').empty('');
+      console.log('You have logged out');
+      $('.rating').hide();
+      $('.random').hide();
+      $('.sign-up').show();
+      $('.sign-in').show();
+      $('.account').hide();
+      $('.home-page').show();
+      $('.beer-listing').hide();
+      $('.rating-listing').empty('');
     }).fail(function(jqxhr) {
       console.error(jqxhr);
     });
   });
 
   //create rating
-  $('#rate-a-beer-modal').on('submit', function(e) {
+  $('#rating-modal').on('submit', function(e) {
     e.preventDefault();
     console.log('here');
     let formData = new FormData(e.target);
@@ -244,158 +246,160 @@ $('#sign-out-button').on('click', function(e) {
     }).done(function(data) {
       myApp.rating = data.rating;
       rating();
-      $('#rate-a-beer-modal').hide();
+      $('.rating').hide();
+      $('.rate-a-beer-modal').hide();
       $('.modal-backdrop').hide();
     }).fail(function(jqxhr) {
       console.error(jqxhr);
     });
   });
 
-// display rating
-let displayRatings = function(response) {
-  let rating = response.ratings;
-  console.log('here');
-  let ratingListing = require('./rating-listing.handlebars');
+  // display rating
+  let displayRatings = function(response) {
+    let rating = response.ratings;
+    console.log('here');
+    let ratingListing = require('./rating-listing.handlebars');
     $('.rating-listing').empty();
     $('.rating-listing').prepend(ratingListing({
-       rating
-     }));
-};
+      rating
+    }));
+  };
 
-let rating = function(){
-  $.ajax({
-    url: myApp.BASE_URL + '/ratings',
-    method: 'GET',
-    headers: {
-      Authorization: 'Token token=' + myApp.user.token,
-    },
-    dataType: 'json'
-  }).done(function(rating){
-    console.log(rating);
-    console.log(myApp.user);
-    displayRatings(rating);
-  });
-};
-// $('.rating').on('submit', function(e){
-//   e.preventDefault();
-//   rating();
-//  });
+  let rating = function() {
+    $.ajax({
+      url: myApp.BASE_URL + '/ratings',
+      method: 'GET',
+      headers: {
+        Authorization: 'Token token=' + myApp.user.token,
+      },
+      dataType: 'json'
+    }).done(function(rating) {
+      console.log(rating);
+      console.log(myApp.user);
+      displayRatings(rating);
+    });
+  };
+  // $('.rating').on('submit', function(e){
+  //   e.preventDefault();
+  //   rating();
+  //  });
 
-// update rating
+  // update rating
   $('.rating-listing').on('click', '.edit-rating', function(e) {
-  myApp.id = $(e.target).attr("data-edit-id");
-  console.log(myApp.id);
+    myApp.id = $(e.target).attr("data-edit-id");
+    console.log(myApp.id);
 
-  $('#update-rating-modal').on('submit', function(e) {
-  e.preventDefault(e);
-  if (!myApp.user) {
-    console.error('Wrong!');
-    return;
-  }
+    $('#update-rating-modal').on('submit', function(e) {
+      e.preventDefault(e);
+      if (!myApp.user) {
+        console.error('Wrong!');
+        return;
+      }
 
-  let formData = new FormData(e.target);
-  $.ajax({
-    url: myApp.BASE_URL + '/ratings/' + myApp.id,
-    method: 'PATCH',
-    headers: {
-      Authorization: 'Token token=' + myApp.user.token,
-    },
-    contentType: false,
-    processData: false,
-    data: formData,
-  }).done(function(data) {
-    console.log(data);
-    $('#update-rating-modal').modal('hide');
-    $('.rating-listing').empty();
-    rating();
-  }).fail(function(jqxhr) {
-    console.error(jqxhr);
+      let formData = new FormData(e.target);
+      $.ajax({
+        url: myApp.BASE_URL + '/ratings/' + myApp.id,
+        method: 'PATCH',
+        headers: {
+          Authorization: 'Token token=' + myApp.user.token,
+        },
+        contentType: false,
+        processData: false,
+        data: formData,
+      }).done(function(data) {
+        console.log(data);
+        $('#update-rating-modal').modal('hide');
+        $('.rating-listing').empty();
+        rating();
+      }).fail(function(jqxhr) {
+        console.error(jqxhr);
+      });
+    });
   });
-});
-});
 
-// delete rating
-$('.rating-listing').on('click', '.delete', function(e) {
-  e.preventDefault();
-  myApp.id = $(e.target).attr("data-id");
-  console.log(myApp.id);
-  if (!myApp.user) {
-    console.error('Wrong!');
-    return;
-  }
+  // delete rating
+  $('.rating-listing').on('click', '.delete', function(e) {
+    e.preventDefault();
+    myApp.id = $(e.target).attr("data-id");
+    console.log(myApp.id);
+    if (!myApp.user) {
+      console.error('Wrong!');
+      return;
+    }
 
-  $.ajax({
-    url: myApp.BASE_URL + '/ratings/' + myApp.id,
-    method: 'DELETE',
-    headers: {
-      Authorization: 'Token token=' + myApp.user.token,
-    },
-  }).done(function() {
-   console.log('deleted post');
-  //  $('#delete-button').off('click', '**');
-     e.preventDefault();
-   $('.rating-listing').empty('');
-   rating();
-  }).fail(function(jqxhr) {
-    console.error(jqxhr);
+    $.ajax({
+      url: myApp.BASE_URL + '/ratings/' + myApp.id,
+      method: 'DELETE',
+      headers: {
+        Authorization: 'Token token=' + myApp.user.token,
+      },
+    }).done(function() {
+      console.log('deleted post');
+      //  $('#delete-button').off('click', '**');
+      e.preventDefault();
+      $('.rating-listing').empty('');
+      rating();
+    }).fail(function(jqxhr) {
+      console.error(jqxhr);
+    });
   });
-});
 
 
 
 
-// search beers
-let searchResults = function (response){
-  let beer = response.beer;
-  let abv = response.abv;
-  let style = response.style;
-  let brewery = response.brewery;
-  console.log('here');
-  let beerListing = require('./beer_listing.handlebars');
-  console.log(beer);
-  beerData.beer = response.beer;
+  // search beers
+  let searchResults = function(response) {
+    let beer = response.beer;
+    let abv = response.abv;
+    let style = response.style;
+    let brewery = response.brewery;
+    console.log('here');
+    let beerListing = require('./beer_listing.handlebars');
+    console.log(beer);
+    beerData.beer = response.beer;
 
     $('.search-results').append(beerListing({
-       beer,
-       abv,
-       style,
-       brewery
+      beer,
+      abv,
+      style,
+      brewery
 
-     }));
-     if ($('.search-results').val() === '') {
-       $('.search-results').append("No beer found!");
-     }
-};
+    }));
+  };
 
 
-  let searchBeer = function(){$.ajax({
-    url: myApp.BASE_URL + '/beer?search_key=' + $('#search-bar').val().toLowerCase().replace(' ',''),
-    method: 'GET',
-    dataType: 'json'
-  }).done(function(beer){
-    console.log(beer);
-    searchResults(beer);
-  }).fail(function(jqxhr) {
-    console.error(jqxhr);
-  });
-};
-$('.search-it').on('click', function(e) {
-e.preventDefault();
-$('.search-it').focus(
-    function(){
-        $('#search-bar').val('');
+  let searchBeer = function() {
+    $.ajax({
+      url: myApp.BASE_URL + '/beer?search_key=' + $('#search-bar').val().toLowerCase().replace(' ', ''),
+      method: 'GET',
+      dataType: 'json'
+    }).done(function(beer) {
+      console.log(beer);
+      searchResults(beer);
+      // if ($('.search-results').html() === '') {
+      //   $('.search-results').html("No beer found!");
+      // }
+    }).fail(function(jqxhr) {
+      console.error(jqxhr);
     });
-searchBeer();
-$('.rate-beer').on('click', function(e){
-  e.preventDefault();
-  $('.search-results').html('');
-  $('.rating').show();
-  // $('.search-results').html('');
-});
-$('.try-again-search').on('click', function(e) {
-  e.preventDefault();
-  $('.search-results').html('');
-});
+  };
+  $('.search-it').on('click', function(e) {
+    e.preventDefault();
+    $('.search-it').focus(
+      function() {
+        $('#search-bar').val('');
+      });
+    searchBeer();
+    $('.rate-beer').on('click', function(e) {
+      e.preventDefault();
+      $('.search-results').html('');
+      $('.rating').show();
+      // $('.search-results').html('');
+    });
+    $('.try-again-search').on('click', function(e) {
+      e.preventDefault();
+      $('.search-results').html('');
+    });
 
   });
 });
