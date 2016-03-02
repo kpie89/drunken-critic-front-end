@@ -43,11 +43,11 @@ webpackJsonp([0],[
 	// const beerSearch = require('./search-beer.js');
 
 	var myApp = {
-	  BASE_URL: 'http://localhost:3000'
+	  BASE_URL: 'https://drunkencritic.herokuapp.com/'
 	};
 
 	var beerData = {
-	  BASE_URL: 'http://localhost:3000'
+	  BASE_URL: 'https://drunkencritic.herokuapp.com/'
 	};
 
 	$(document).ready(function () {
@@ -65,6 +65,7 @@ webpackJsonp([0],[
 	  $('.your-ratings').hide();
 	  $('.rating-listing').empty('');
 
+	  // seperated click handler to expose bug
 	  $('.rate-beer').on('click', function (e) {
 	    e.preventDefault();
 	    console.log('look');
@@ -1662,7 +1663,7 @@ webpackJsonp([0],[
 	    + alias4(((helper = (helper = helpers.beer_id || (depth0 != null ? depth0.beer_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"beer_id","hash":{},"data":data}) : helper)))
 	    + "\n</div>\n<div class=\"rating col-xs-12 col-md-8\" style=\"border: solid\">\n    <h3>Score: "
 	    + alias4(((helper = (helper = helpers.score || (depth0 != null ? depth0.score : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"score","hash":{},"data":data}) : helper)))
-	    + "</h3>\n    <p style=\"color:black\">Description: "
+	    + "</h3>\n    <p style=\"font-size: 20px\">Description: "
 	    + alias4(((helper = (helper = helpers.desc || (depth0 != null ? depth0.desc : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"desc","hash":{},"data":data}) : helper)))
 	    + "</p>\n    <button class=\"btn btn-default navbar-btn edit-rating\" id='update-rating' data-target=\"#update-rating-modal\" data-toggle=\"modal\" type=\"button\" data-edit-id=\""
 	    + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
