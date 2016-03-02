@@ -247,7 +247,7 @@ $(document).ready(() => {
       myApp.rating = data.rating;
       rating();
       $('.rating').hide();
-      $('.rate-a-beer-modal').hide();
+      $('#rate-a-beer-modal').hide();
       $('.modal-backdrop').hide();
     }).fail(function(jqxhr) {
       console.error(jqxhr);
@@ -398,6 +398,7 @@ $(document).ready(() => {
     });
     $('.try-again-search').on('click', function(e) {
       e.preventDefault();
+      console.log('yes');
       $('.search-results').html('');
     });
 
