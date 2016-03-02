@@ -1,12 +1,26 @@
 <!DOCTYPE html>
-<html class="full" lang="en">
+<!--html lang="en"-->
 
 <head>
   <title>The Drunken Critic</title>
   <script src="vendor.bundle.js" type="text/javascript" charset="utf-8" defer></script>
   <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
+  <link href='https://fonts.googleapis.com/css?family=Bevan' rel='stylesheet' type='text/css'>
   <link rel="icon" type="image/ico" href="https://s3-us-west-2.amazonaws.com/beerrec/img/favicon.ico">
 </head>
+<body>
+<div class="carousel slide carousel-fade" data-ride="carousel">
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+        </div>
+        <div class="item">
+        </div>
+        <div class="item">
+        </div>
+    </div>
+</div>
 <div class="page-header">
   <h1>The Drunken Critic</h1>
 </div>
@@ -20,133 +34,133 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">TDC</a>
     </div>
-
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <form class="navbar-form navbar-left" role="search">
+      <form class="navbar-form navbar-left searchy" role="search">
         <div class="form-group">
           <input type="text" class="form-control" id="search-bar" placeholder="Search">
         </div>
         <button type="submit" class="btn btn-default search-it" data-toggle="modal" data-target="#search-beer">Submit</button>
       </form>
-      <!--sign-up modal -->
-      <button class="btn btn-default navbar-btn sign-up" data-target="#sign-up-modal" data-toggle="modal" type="button">Sign Up</button>
-      <div aria-labelledby="myModalLabel" class="modal fade" id="sign-up-modal" role="dialog" tabindex="-1">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="signup-label">Sign Up</h4>
-            </div>
-            <div class="modal-body">
-              <form id='sign-up'>
-                <fieldset class="form-group">
-                  <label for="credentials[email]">Email</label>
-                  <input class="form-control" name="credentials[email]" placeholder="Email" type="text">
-                </fieldset>
-                <fieldset class="form-group">
-                  <label for="credentials[password]">Password</label>
-                  <input class="form-control" name="credentials[password]" placeholder="Password" type="password">
-                </fieldset>
-                <input class="btn btn-primary" name="submit" type="submit">
-                <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- sign in modal -->
-      <button class="btn btn-default navbar-btn sign-in" data-target="#sign-in-modal" data-toggle="modal" type="button">Sign In</button>
-      <div aria-labelledby="myModalLabel" class="modal fade" id="sign-in-modal" role="dialog" tabindex="-1">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="signup-label">Sign In</h4>
-            </div>
-            <div class="modal-body">
-              <form id='sign-in' name="sign-in">
-                <fieldset class="form-group">
-                  <label for="credentials[email]">Email</label>
-                  <input class="form-control" name="credentials[email]" placeholder="Email" type="text">
-                </fieldset>
-                <fieldset class="form-group">
-                  <label for="credentials[password]">Password</label>
-                  <input class="form-control" name="credentials[password]" placeholder="Password" type="password">
-                </fieldset>
-                <input class="btn btn-primary" name="submit" type="submit">
-                <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
-              </form>
+
+          <!--sign-up modal -->
+          <button class="btn btn-default navbar-btn sign-up" data-target="#sign-up-modal" data-toggle="modal" type="button">Sign Up</button>
+          <div aria-labelledby="myModalLabel" class="modal fade" id="sign-up-modal" role="dialog" tabindex="-1">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="signup-label">Sign Up</h4>
+                </div>
+                <div class="modal-body">
+                  <form id='sign-up'>
+                    <fieldset class="form-group">
+                      <label for="credentials[email]">Email</label>
+                      <input class="form-control" name="credentials[email]" placeholder="Email" type="text">
+                    </fieldset>
+                    <fieldset class="form-group">
+                      <label for="credentials[password]">Password</label>
+                      <input class="form-control" name="credentials[password]" placeholder="Password" type="password">
+                    </fieldset>
+                    <input class="btn btn-primary" name="submit" type="submit">
+                    <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <button type="button" class="btn btn-default navbar-btn random" data-toggle="modal" data-target="#random-beer">Discover a new beer!</button>
-      <ul class="nav navbar-nav navbar-right account">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li>
-              <button class="btn btn-default navbar-btn signed-in btn-sm" data-target="#change-password-modal" data-toggle="modal" type="button">Change Password</button>
-            </li>
-            <li role="separator" class="divider"></li>
-            <li>
-              <button class="btn btn-default navbar-btn signed-out btn-sm" data-target="#sign-out-modal" data-toggle="modal" type="button">Logout</button>
+          <!-- sign in modal -->
+          <button class="btn btn-default navbar-btn sign-in" data-target="#sign-in-modal" data-toggle="modal" type="button">Sign In</button>
+          <div aria-labelledby="myModalLabel" class="modal fade" id="sign-in-modal" role="dialog" tabindex="-1">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="signup-label">Sign In</h4>
+                </div>
+                <div class="modal-body">
+                  <form id='sign-in' name="sign-in">
+                    <fieldset class="form-group">
+                      <label for="credentials[email]">Email</label>
+                      <input class="form-control" name="credentials[email]" placeholder="Email" type="text">
+                    </fieldset>
+                    <fieldset class="form-group">
+                      <label for="credentials[password]">Password</label>
+                      <input class="form-control" name="credentials[password]" placeholder="Password" type="password">
+                    </fieldset>
+                    <input class="btn btn-primary" name="submit" type="submit">
+                    <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-default navbar-btn random" data-toggle="modal" data-target="#random-beer">Rate a random beer!</button>
+          <ul class="nav navbar-nav navbar-right account">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <button class="btn btn-default navbar-btn signed-in btn-sm" data-target="#change-password-modal" data-toggle="modal" type="button">Change Password</button>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li>
+                  <button class="btn btn-default navbar-btn signed-out btn-sm" data-target="#sign-out-modal" data-toggle="modal" type="button">Logout</button>
+                </li>
+              </ul>
             </li>
           </ul>
-        </li>
-      </ul>
-    </div>
-    <!-- Change password modal -->
-    <div aria-labelledby="myModalLabel" class="modal fade" id="change-password-modal" role="dialog" tabindex="-1">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" style="text-align: center" id="change-password-label">Change
+        </div>
+        <!-- Change password modal -->
+        <div aria-labelledby="myModalLabel" class="modal fade" id="change-password-modal" role="dialog" tabindex="-1">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" style="text-align: center" id="change-password-label">Change
                   Password</h4>
-          </div>
-          <div class="modal-body">
-            <form id='change-password' name="change-password">
-              <fieldset class="form-group">
-                <label for="passwords[old]">Old Password
-                </label>
-                <input class="form-control" name="passwords[old]" placeholder="Old Password" type="text">
-              </fieldset>
-              <fieldset class="form-group">
-                <label for="passwords[new]">New Password
-                </label>
-                <input class="form-control" name="passwords[new]" placeholder="Password" type="password">
-              </fieldset>
-              <input class="btn btn-primary" name="submit" type="submit">
-              <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Sign Out Modal -->
-    <div aria-labelledby="myModalLabel" class="modal fade" id="sign-out-modal" role="dialog" tabindex="-1">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="sign-out-label">For real?</h4>
-          </div>
-          <div class="modal-body">
-            <button type="button" input class="btn btn-primary" name="submit" <button type="button" class="btn btn-primary" id="sign-out-button" data-dismiss="modal">Yeah</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Nah</button>
-            </form>
+              </div>
+              <div class="modal-body">
+                <form id='change-password' name="change-password">
+                  <fieldset class="form-group">
+                    <label for="passwords[old]">Old Password
+                    </label>
+                    <input class="form-control" name="passwords[old]" placeholder="Old Password" type="text">
+                  </fieldset>
+                  <fieldset class="form-group">
+                    <label for="passwords[new]">New Password
+                    </label>
+                    <input class="form-control" name="passwords[new]" placeholder="Password" type="password">
+                  </fieldset>
+                  <input class="btn btn-primary" name="submit" type="submit">
+                  <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
+        <!-- Sign Out Modal -->
+        <div aria-labelledby="myModalLabel" class="modal fade" id="sign-out-modal" role="dialog" tabindex="-1">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="sign-out-label">For real?</h4>
+              </div>
+              <div class="modal-body">
+                <button type="button" input class="btn btn-primary" name="submit" <button type="button" class="btn btn-primary" id="sign-out-button" data-dismiss="modal">Yeah</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Nah</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.navbar-collapse -->
       </div>
-    </div>
-    <!-- /.navbar-collapse -->
-  </div>
-  <!-- /.container-fluid -->
+      <!-- /.container-fluid -->
 </nav>
+
 <!-- Random beer modal -->
 <div class="modal fade" id="random-beer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -159,7 +173,7 @@
         <div class="random-beer"></div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default rate-beer" data-dismiss="modal">Yes! I'll rate it!</button>
+        <button type="button" class="btn btn-default rate-beer" data-toggle="modal" data-target="#rate-a-beer-modal" data-dismiss="modal">Yes! I'll rate it!</button>
         <button type="button" class="btn btn-primary try-again" data-dismiss="modal">No. I'll have to try again.</button>
       </div>
     </div>
@@ -173,20 +187,49 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="search-results">Search Results</h4>
+        <h4 class="modal-title">Search Results</h4>
       </div>
-      <div class="modal-body">
-        <div class="search-results"></div>
+      <div class="modal-body search-results">
+        <div class="search-results-body" style="font-size: 40px"></div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default rate-beer-search" data-dismiss="modal">That's it! Rate it.</button>
+        <button type="button" class="btn btn-default rate-beer" data-toggle="modal" data-target="#rate-a-beer-modal" data-dismiss="modal">Yes! I'll rate it!</button>
         <button type="button" class="btn btn-primary try-again-search" data-dismiss="modal">No. I'll have to try again.</button>
       </div>
     </div>
   </div>
 </div>
 </div>
-<form class='rating'>
+
+<!-- make rating modal -->
+<div class="modal fade" id="rate-a-beer-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="make-rating?">Rate this beer!</h4>
+      </div>
+      <div class="modal-body">
+        <form id="rating-modal" name="rating">
+          <fieldset class="form-group">
+            <label for="rating[score]">1 outta 5
+            </label>
+            <input class="form-control" name="rating[score]" placeholder="Score" type="text">
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="rating[desc]">Description
+            </label>
+            <textarea class="form-control" rows="5" name="rating[desc]" placeholder="Description" type="text"></textarea>
+          </fieldset>
+          <input class="btn btn-primary rating-done" name="submit" type="submit">
+          <!-- <button class="btn btn-default navbar-btn update-done" id='update-rating' type="button" data-id="{{id}}">Update!</button> -->
+          <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<form class='rating'>
   <fieldset class="form-group">
     <div>
       <label for="rating[score]">Score Outta 5</label>
@@ -205,44 +248,47 @@
     </div>
   </fieldset>
   <input class="btn btn-primary" name="submit" type="submit">
-</form>
+</form> -->
+
 
       <div class="home-page">
-        <h1>Sign up or sign in to start</h1>
+        <h1>Sign up or sign in to start!</h1>
       </div>
       <div class="beer-listing col-xs-12 col-md-4">
         <h1>Your ratings:</h1>
       <div class="rating-listing col-xs-12 col-md-8">
         </div>
 
-      <!-- update-rating-modal-->
-      <div class="modal fade" id="update-rating-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="update-rating?">Update this rating</h4>
-            </div>
-            <div class="modal-body">
-              <form id="update-rating-modal" name="update-rating">
-                <fieldset class="form-group">
-                  <label for="rating[score]">1 outta 5
-                  </label>
-                  <input class="form-control" name="rating[score]" placeholder="New Score" type="text">
-                </fieldset>
-                <fieldset class="form-group">
-                  <label for="rating[desc]">New Description
-                  </label>
-                  <textarea class="form-control" rows="5" name="rating[desc]" placeholder="New Desc" type="text"></textarea>
-                </fieldset>
-                <input class="btn btn-primary update-done" data-id="{{id}}" name="submit" type="submit">
-                <!-- <button class="btn btn-default navbar-btn update-done" id='update-rating' type="button" data-id="{{id}}">Update!</button> -->
-                <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button>
-              </form>
-            </div>
-          </div>
-        </div>
+
+<!-- update-rating-modal-->
+<div class="modal fade" id="update-rating-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="update-rating?">Update this rating</h4>
       </div>
-      </body>
+      <div class="modal-body">
+        <form id="update-rating-modal" name="update-rating">
+          <fieldset class="form-group">
+            <label for="rating[score]">1 outta 5
+            </label>
+            <input class="form-control" name="rating[score]" placeholder="New Score" type="text">
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="rating[desc]">New Description
+            </label>
+            <textarea class="form-control" rows="5" name="rating[desc]" placeholder="New Desc" type="text"></textarea>
+          </fieldset>
+          <input class="btn btn-primary update-done" data-id="{{id}}" name="submit" type="submit">
+          <!-- <button class="btn btn-default navbar-btn update-done" id='update-rating' type="button" data-id="{{id}}">Update!</button> -->
+          <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
 
 </html>
