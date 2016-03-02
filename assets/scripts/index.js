@@ -25,10 +25,26 @@ const beerData = {
 
 $(document).ready(() => {
 
+  $('.carousel').carousel({
+  interval: 15000
+});
+
+
   $('.rating').hide();
   $('.random').hide();
-  $('.rating-listing').html('');
+  // $('.rating-listing').html('');
   $('.account').hide();
+  $('.searchy').hide();
+  $('.beer-listing').hide();
+  $('.your-ratings').hide();
+  $('.rating-listing').empty('');
+
+  $('.rate-beer').on('click', function(e){
+    e.preventDefault();
+    $('.rating').show();
+    $('.random-beer').html('');
+  });
+
 
 //   beerButton.displayRandomBeer();
 //   signUp.signUp();
@@ -82,11 +98,11 @@ $(document).ready(() => {
     e.preventDefault();
     randomBeer();
   });
-  $('.rate-beer').on('click', function(e){
-    e.preventDefault();
-    $('.rating').show();
-    $('.random-beer').html('');
-  });
+  // $('.rate-beer').on('click', function(e){
+  //   e.preventDefault();
+  //   $('.rating').show();
+  //   $('.random-beer').html('');
+  // });
   $('.try-again').on('click', function(e) {
     e.preventDefault();
     $('.random-beer').html('');
@@ -133,9 +149,14 @@ $(document).ready(() => {
       console.log(data);
       $('#sign-in-modal').modal('hide');
       $('.sign-up').hide();
+      $('.sign-in').hide();
       $('.random').show();
       $('.home-page').hide();
       $('.account').show();
+      $('.searchy').show();
+      $('.beer-listing').show();
+      $('.your-ratings').show();
+      $('.carousel-home').show();
       rating();
 
     }).fail(function(jqxhr) {
@@ -196,13 +217,15 @@ $('#sign-out-button').on('click', function(e) {
      $('.sign-in').show();
      $('.account').hide();
      $('.home-page').show();
+     $('.beer-listing').hide();
+     $('.rating-listing').empty('');
     }).fail(function(jqxhr) {
       console.error(jqxhr);
     });
   });
 
   //create rating
-  $('.rating').on('submit', function(e) {
+  $('#rate-a-beer-modal').on('submit', function(e) {
     e.preventDefault();
     console.log('here');
     let formData = new FormData(e.target);
@@ -220,12 +243,9 @@ $('#sign-out-button').on('click', function(e) {
       data: formData,
     }).done(function(data) {
       myApp.rating = data.rating;
-      console.log(data);
-      console.log(myApp.rating.id);
-      console.log(beerData.beer);
-      $('.rating').hide();
-      // $('.rating-listing').empty();
       rating();
+      $('#rate-a-beer-modal').hide();
+      $('.modal-backdrop').hide();
     }).fail(function(jqxhr) {
       console.error(jqxhr);
     });
@@ -236,10 +256,8 @@ let displayRatings = function(response) {
   let rating = response.ratings;
   console.log('here');
   let ratingListing = require('./rating-listing.handlebars');
-  console.log(rating);
-  console.log();
-    // $('.rating-listing').empty();
-    $('.rating-listing').append(ratingListing({
+    $('.rating-listing').empty();
+    $('.rating-listing').prepend(ratingListing({
        rating
      }));
 };
@@ -316,7 +334,6 @@ $('.rating-listing').on('click', '.delete', function(e) {
    console.log('deleted post');
   //  $('#delete-button').off('click', '**');
      e.preventDefault();
-     console.log(myApp.rating.id);
    $('.rating-listing').empty('');
    rating();
   }).fail(function(jqxhr) {
@@ -337,8 +354,6 @@ let searchResults = function (response){
   let beerListing = require('./beer_listing.handlebars');
   console.log(beer);
   beerData.beer = response.beer;
-  console.log(beerData.beer);
-  console.log(beer.id);
 
     $('.search-results').append(beerListing({
        beer,
@@ -347,6 +362,9 @@ let searchResults = function (response){
        brewery
 
      }));
+     if ($('.search-results').val() === '') {
+       $('.search-results').append("No beer found!");
+     }
 };
 
 
@@ -356,7 +374,6 @@ let searchResults = function (response){
     dataType: 'json'
   }).done(function(beer){
     console.log(beer);
-    $('.search').empty();
     searchResults(beer);
   }).fail(function(jqxhr) {
     console.error(jqxhr);
@@ -364,11 +381,16 @@ let searchResults = function (response){
 };
 $('.search-it').on('click', function(e) {
 e.preventDefault();
+$('.search-it').focus(
+    function(){
+        $('#search-bar').val('');
+    });
 searchBeer();
-$('.rate-beer-search').on('click', function(e){
+$('.rate-beer').on('click', function(e){
   e.preventDefault();
-  $('.rating').show();
   $('.search-results').html('');
+  $('.rating').show();
+  // $('.search-results').html('');
 });
 $('.try-again-search').on('click', function(e) {
   e.preventDefault();
