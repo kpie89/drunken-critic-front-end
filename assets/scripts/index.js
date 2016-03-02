@@ -16,11 +16,11 @@ require('./example');
 // const beerSearch = require('./search-beer.js');
 
 const myApp = {
-  BASE_URL: 'http://localhost:3000',
+  BASE_URL: 'https://drunkencritic.herokuapp.com/',
 };
 
 const beerData = {
-  BASE_URL: 'http://localhost:3000',
+  BASE_URL: 'https://drunkencritic.herokuapp.com/',
 };
 
 $(document).ready(() => {
@@ -39,6 +39,8 @@ $(document).ready(() => {
   $('.your-ratings').hide();
   $('.rating-listing').empty('');
 
+
+// seperated click handler to expose bug
   $('.rate-beer').on('click', function(e) {
     e.preventDefault();
     console.log('look');
