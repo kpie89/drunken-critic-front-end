@@ -16,11 +16,11 @@ require('./example');
 // const beerSearch = require('./search-beer.js');
 
 const myApp = {
-  BASE_URL: 'http://localhost:3000',
+  BASE_URL: 'https://drunkencritic.herokuapp.com/',
 };
 
 const beerData = {
-  BASE_URL: 'http://localhost:3000',
+  BASE_URL: 'https://drunkencritic.herokuapp.com/',
 };
 
 $(document).ready(() => {
