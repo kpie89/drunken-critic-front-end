@@ -3,26 +3,199 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 
 // body {
-// 	margin-top: 50px;
-// 	margin-bottom: 50px;
-// 	background: none;
+	html {
+		  color: #ffffe6;
+		  font-family: baven;
+	    position: relative;
+	    min-height: 100%;
+	}
+	.carousel-fade .carousel-inner .item {
+	    opacity: 0;
+	    transition-property: opacity;
+	}
+	.carousel-fade .carousel-inner .active {
+	    opacity: 1;
+	}
+	.carousel-fade .carousel-inner .active.left,
+	.carousel-fade .carousel-inner .active.right {
+	    left: 0;
+	    opacity: 0;
+	    z-index: 1;
+	}
+	.carousel-fade .carousel-inner .next.left,
+	.carousel-fade .carousel-inner .prev.right {
+	    opacity: 1;
+	}
+	.carousel-fade .carousel-control {
+	    z-index: 2;
+	}
+	@media all and (transform-3d),
+	(-webkit-transform-3d) {
+	    .carousel-fade .carousel-inner > .item.next,
+	    .carousel-fade .carousel-inner > .item.active.right {
+	        opacity: 0;
+	        -webkit-transform: translate3d(0, 0, 0);
+	        transform: translate3d(0, 0, 0);
+	    }
+	    .carousel-fade .carousel-inner > .item.prev,
+	    .carousel-fade .carousel-inner > .item.active.left {
+	        opacity: 0;
+	        -webkit-transform: translate3d(0, 0, 0);
+	        transform: translate3d(0, 0, 0);
+	    }
+	    .carousel-fade .carousel-inner > .item.next.left,
+	    .carousel-fade .carousel-inner > .item.prev.right,
+	    .carousel-fade .carousel-inner > .item.active {
+	        opacity: 1;
+	        -webkit-transform: translate3d(0, 0, 0);
+	        transform: translate3d(0, 0, 0);
+	    }
+	}
+	.item:nth-child(1) {
+	    background: url(http://definitelydepere.org/wp-content/uploads/2015/05/32216ccffb6f3f2184a54ce11f537a11.jpg) no-repeat center center fixed;
+	    -webkit-background-size: cover;
+	    -moz-background-size: cover;
+	    -o-background-size: cover;
+	    background-size: cover;
+	}
+	.item:nth-child(2) {
+	    background: url(http://www.thebatchyard.com/wp-content/uploads/2014/11/savdist-com.jpg) no-repeat center center fixed;
+	    -webkit-background-size: cover;
+	    -moz-background-size: cover;
+	    -o-background-size: cover;
+	    background-size: cover;
+	}
+	.item:nth-child(3) {
+	    background: url(https://cdn2.vox-cdn.com/thumbor/dClB9wdxTCvzotjbA9higfGlFvQ=/0x100:2000x1225/1310x737/cdn0.vox-cdn.com/uploads/chorus_image/image/46605624/20150527-0K1A7083.0.0.jpg) no-repeat center center fixed;
+	    -webkit-background-size: cover;
+	    -moz-background-size: cover;
+	    -o-background-size: cover;
+	    background-size: cover;
+	}
+	.carousel {
+	    z-index: -99;
+	}
+	.carousel .item {
+	    position: fixed;
+	    width: 100%;
+	    height: 100%;
+	}
+	.title {
+	  text-align: center;
+	  margin-top: 20px;
+	  padding: 10px;
+	  text-shadow: 2px 2px #000;
+	  color: #FFF;
+	}
+
+
+
+// body { // .navbar, .home-page, .beer-listing, .rating-listing {
+// 	color: #800;
+// 	font-family: bevan;
+//   background: rgba(253,234,88,1);
+//   background: -moz-linear-gradient(left, rgba(253,234,88,1) 0%, rgba(253,233,88,1) 1%, rgba(255,173,66,0.91) 46%, rgba(255,173,66,0.81) 100%);
+//   background: -webkit-gradient(left top, right top, color-stop(0%, rgba(253,234,88,1)), color-stop(1%, rgba(253,233,88,1)), color-stop(46%, rgba(255,173,66,0.91)), color-stop(100%, rgba(255,173,66,0.81)));
+//   background: -webkit-linear-gradient(left, rgba(253,234,88,1) 0%, rgba(253,233,88,1) 1%, rgba(255,173,66,0.91) 46%, rgba(255,173,66,0.81) 100%);
+//   background: -o-linear-gradient(left, rgba(253,234,88,1) 0%, rgba(253,233,88,1) 1%, rgba(255,173,66,0.91) 46%, rgba(255,173,66,0.81) 100%);
+//   background: -ms-linear-gradient(left, rgba(253,234,88,1) 0%, rgba(253,233,88,1) 1%, rgba(255,173,66,0.91) 46%, rgba(255,173,66,0.81) 100%);
+//   background: linear-gradient(to right, rgba(253,234,88,1) 0%, rgba(253,233,88,1) 1%, rgba(255,173,66,0.91) 46%, rgba(255,173,66,0.81) 100%);
+//   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdea58', endColorstr='#ffad42', GradientType=1 );
 // }
+
+.navbar{
+	font-family: bevan;
+	color: #ffffe6;
+  background: #800;
+	margin-right: 200px;
+	margin-left: 200px;
+	border: solid #ffffe6;
+	border-radius: 15px;
+}
+
+.listing {
+	margin-right: 10px;
+}
+.rating {
+	font-family: bevan;
+	color: #800;
+	background:rgba(255,255,255,0.5);
+	border-radius: 15px;
+}
+
+.beer-listing {
+  font-family: bevan;
+	color: #800;
+	background:rgba(255,255,255,0.5);
+	border-radius: 15px;
+}
+
+.page-header {
+	overflow: hidden;
+	background-color: #800;
+  color: #ffffe6;
+  font-family: bevan;
+  text-align: center;
+	margin-right: 200px;
+	margin-left: 200px;
+	border: solid #ffffe6;
+	font-size: 300px;
+	border-radius: 15px;
+}
+
+.home-page {
+	overflow: hidden;
+	background-color: #800;
+  color: #ffffe6;
+  font-family: bevan;
+  text-align: center;
+	margin-right: 300px;
+	margin-left: 300px;
+	border: solid #ffffe6;
+  margin-top: 30px;
+	font-size: 200px;
+	border-radius: 15px;
+}
+
+.carousel-caption {
+	font-size: 100px;
+	top: 0;
+}
+
+.modal {
+	color: #800;
+	font-family: bevan;
+}
+// body {
+// .carousel { z-index: -99; } /* keeps this behind all content */
+// .carousel .item {
+//     position: fixed;
+//     width: 100%; height: 100%;
+//     -webkit-transition: opacity 1s;
+//     -moz-transition: opacity 1s;
+//     -ms-transition: opacity 1s;
+//     -o-transition: opacity 1s;
+//     transition: opacity 1s;
 //
-// .full {
-//   background: url('http://bgfons.com/upload/beer_texture1958.jpg') no-repeat center center fixed;
-//   -webkit-background-size: cover;
-//   -moz-background-size: cover;
-//   -o-background-size: cover;
-//   background-size: cover;
 // }
-//
-// .navbar{
-//   background-image: url('http://bgfons.com/upload/beer_texture1958.jpg');
-//   background-repeat: repeat-x;
-// 	border: none;
+// .carousel .one {
+//     background: url('https://cdn2.vox-cdn.com/thumbor/dClB9wdxTCvzotjbA9higfGlFvQ=/0x100:2000x1225/1310x737/cdn0.vox-cdn.com/uploads/chorus_image/image/46605624/20150527-0K1A7083.0.0.jpg');
+//     background-size: cover;
+//     -moz-background-size: cover;
 // }
-//
-// .rating-listing {
-// 	color: white;
-//
+// .carousel .two {
+//     background: url(assets/img/slide2blur.jpg);
+//     background-size: cover;
+//     -moz-background-size: cover;
+// }
+// .carousel .three {
+//     background: url(assets/img/slide1blur.jpg);
+//     background-size: cover;
+//     -moz-background-size: cover;
+// }
+// .carousel .active.left {
+//     left:0;
+//     opacity:0;
+//     z-index:2;
+//  }
 // }
