@@ -66,7 +66,6 @@ webpackJsonp([0],[
 	  $('.rating-listing').empty('');
 
 	  $('.rate-beer').on('click', function (e) {
-	    debugger;
 	    e.preventDefault();
 	    console.log('look');
 	    $('.rating').show();
