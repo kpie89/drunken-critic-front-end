@@ -54,6 +54,7 @@
                   <h4 class="modal-title" id="signup-label">Sign Up</h4>
                 </div>
                 <div class="modal-body">
+                  <div class="already-user"></div>
                   <form id='sign-up'>
                     <fieldset class="form-group">
                       <label for="credentials[email]">Email</label>
@@ -80,6 +81,7 @@
                   <h4 class="modal-title" id="signup-label">Sign In</h4>
                 </div>
                 <div class="modal-body">
+                  <div class="wrong-login"></div>
                   <form id='sign-in' name="sign-in">
                     <fieldset class="form-group">
                       <label for="credentials[email]">Email</label>
@@ -173,7 +175,7 @@
         <div class="random-beer"></div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default rate-beer" data-toggle="modal" data-target="#rate-a-beer-modal" data-dismiss="modal">Yes! I'll rate it!</button>
+        <button type="button" class="btn btn-default rate-beer" id="rate-a-beer" data-toggle="modal" data-target="#rate-a-beer-modal" data-dismiss="modal">Yes! I'll rate it!</button>
         <button type="button" class="btn btn-primary try-again" data-dismiss="modal">No. I'll have to try again.</button>
       </div>
     </div>
@@ -182,7 +184,7 @@
 </div>
 
 <!-- Search beer modal -->
-<div class="modal fade" id="search-beer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-- <div class="modal fade" id="search-beer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -199,7 +201,7 @@
     </div>
   </div>
 </div>
-</div>
+</div> -->
 
 <!-- make rating modal -->
 <div class="modal fade" id="rate-a-beer-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

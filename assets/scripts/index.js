@@ -23,10 +23,13 @@ const beerData = {
   BASE_URL: 'https://drunkencritic.herokuapp.com/',
 };
 
+
+const simpleStorage = require('simplestorage.js');
+
 $(document).ready(() => {
 
   $('.carousel').carousel({
-    interval: 15000
+    interval: 10000
   });
 
 
@@ -41,12 +44,18 @@ $(document).ready(() => {
 
 
 // seperated click handler to expose bug
-  $('.rate-beer').on('click', function(e) {
-    e.preventDefault();
-    console.log('look');
-    $('.rating').show();
-    $('.random-beer').html('');
-  });
+  // $('#rate-a-beer').on('click', function(e) {
+  //   //here
+  //   e.preventDefault();
+  //   $('#random-beer').hide();
+  //   console.log('show beer modal');
+  //   $('#rate-a-beer-modal').show();
+  //   debugger;
+  //   console.log('show beer form');
+  //   // $('.rating').show();
+  //   // $('.rating').hide();
+  //   // $('.random-beer').html('');
+  // });
 
 
   //   beerButton.displayRandomBeer();
@@ -60,7 +69,13 @@ $(document).ready(() => {
   //   beerSearch.searchBeer();
   // });
 
+  let alreadyUser = function() {
+    $('.already-user').html('Username is already taken!');
+  };
 
+  let loginWrong = function() {
+    $('.wrong-login').html('Username or password are incorrect!');
+  };
 
 
   // Display random beer
@@ -101,11 +116,14 @@ $(document).ready(() => {
     e.preventDefault();
     randomBeer();
   });
-  // $('.rate-beer').on('click', function(e){
-  //   e.preventDefault();
-  //   $('.rating').show();
-  //   $('.random-beer').html('');
-  // });
+  $('.rate-beer').on('click', function(e){
+    e.preventDefault();
+    //here 1st time
+    debugger;
+    $('#rate-a-beer-modal').show();
+    $('.rating').show();
+    $('.random-beer').html('');
+  });
   $('.try-again').on('click', function(e) {
     e.preventDefault();
     $('.random-beer').html('');
@@ -131,6 +149,7 @@ $(document).ready(() => {
       $('.home-page').hide();
       signIn(e);
     }).fail(function(jqxhr) {
+      alreadyUser();
       console.error(jqxhr);
     });
   });
@@ -150,6 +169,7 @@ $(document).ready(() => {
     }).done(function(data) {
       myApp.user = data.user;
       console.log(data);
+      let userInfo = simpleStorage.set('user', data.user);
       $('#sign-in-modal').modal('hide');
       $('.sign-up').hide();
       $('.sign-in').hide();
@@ -163,6 +183,7 @@ $(document).ready(() => {
       rating();
 
     }).fail(function(jqxhr) {
+      loginWrong();
       console.error(jqxhr);
     });
   };
@@ -249,8 +270,12 @@ $(document).ready(() => {
       rating();
       $('.rating').hide();
       $('#rate-a-beer-modal').hide();
+      debugger;
+      //here second time
       $('.modal-backdrop').hide();
     }).fail(function(jqxhr) {
+      $('#rate-a-beer-modal').hide();
+      debugger;
       console.error(jqxhr);
     });
   });
@@ -261,6 +286,8 @@ $(document).ready(() => {
     console.log('here');
     let ratingListing = require('./rating-listing.handlebars');
     $('.rating-listing').empty();
+    // $('#rate-a-beer-modal').hide();
+    // debugger;
     $('.rating-listing').prepend(ratingListing({
       rating
     }));
@@ -392,9 +419,11 @@ $(document).ready(() => {
       });
     searchBeer();
     $('.rate-beer').on('click', function(e) {
+
       e.preventDefault();
       $('.search-results').html('');
       $('.rating').show();
+      debugger;
       // $('.search-results').html('');
     });
     $('.try-again-search').on('click', function(e) {
